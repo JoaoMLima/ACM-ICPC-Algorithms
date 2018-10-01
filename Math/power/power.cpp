@@ -1,15 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int power(int x,int n){
+long long power(long long x,long long n){
 	if(n==0){
-		return 1;
+		return 1ll;
 	}
-	return x*power(x,n-1);
+	if (n & 1) {
+		return x*power(x,n-1);
+	}
+	x = power(x,n >> 1);
+	return x*x;
 }
 
 int main(){
-	int x,n;
+	long long x,n;
 	cin>>x>>n;
 	cout<<power(x,n)<<endl;
 }
